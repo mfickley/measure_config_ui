@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charest="utf-8">
+    {{dropzone.load_css()}}
+    {{dropzone.style('border: 4px dashed #178165;
+    min-height: 400px;
+    max-height: 500px;
+    max-width: 500px;
+    margin-left: 20px')}}
+</head>
+
+<body>
+
+    {% extends "template.html" %}
+    {% block content %}
+    <form method="post" action="/">
+        <input type="submit" value="Validate" name="action1"/>
+    </form>
+    <div style="text-align:center;border:4px;max-height: 500;max-width: 500;margin-right:200px ;"></div>
+    {{dropzone.create(action = 'upload')}}
+    {{dropzone.load_js()}}
+    {{dropzone.config()}}
+</body>
+{% endblock %}
+
+</html>

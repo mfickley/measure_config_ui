@@ -1,0 +1,267 @@
+{
+
+    "$id": "measure-ui",
+  
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+  
+    "type": "object",
+  
+    "required": [],
+  
+    "properties": {
+  
+      "initiatives": {
+  
+        "type": "array",
+  
+        "items": {
+  
+          "type": "object",
+  
+          "required": ["name"],
+  
+          "properties": {
+  
+            "name": {
+  
+              "type": "string"
+  
+            },
+  
+            "enabled": {
+  
+              "type": "boolean"
+  
+            },
+  
+            "periodType": {
+  
+              "type": "string"
+  
+            },
+  
+            "payerSupplied": {
+  
+              "type": "boolean"
+  
+            },
+  
+            "assignedMeasures": {
+  
+              "type": "array",
+  
+              "items": {
+  
+                "type": "object",
+  
+                "required": ["measure", "rate"],
+  
+                "properties": {
+  
+                  "measure": {
+  
+                    "type": "string"
+  
+                  },
+  
+                  "rate": {
+  
+                    "type": "string"
+  
+                  },
+  
+                  "threshold": {
+  
+                    "type": "number"
+  
+                  },
+  
+                  "thresholdDirection": {
+  
+                    "type": "boolean"
+  
+                  },
+  
+                  "displayName": {
+  
+                    "type": "string"
+  
+                  },
+  
+                  "displayShortName": {
+  
+                    "type": "string"
+  
+                  },
+  
+                  "displayDescription": {
+  
+                    "type": "string"
+  
+                  },
+  
+                  "enabled": {
+  
+                    "type": "boolean"
+  
+                  },
+  
+                  "qualityScoreThresholds": {
+  
+                    "type": "array",
+  
+                    "items": {
+  
+                      "type": "object",
+  
+                      "required": ["calendarYear", "thresholds", "factors"],
+  
+                      "properties": {
+  
+                        "calendarYear": {
+  
+                          "type": "integer"
+  
+                        },
+  
+                        "thresholds": {
+  
+                          "type": "array",
+  
+                          "items": {
+  
+                            "type": "number"
+  
+                          }
+  
+                        },
+  
+                        "factors": {
+  
+                          "type": "array",
+  
+                          "items": {
+  
+                            "type": "number"
+  
+                          }
+  
+                        }
+  
+                      }
+  
+                    }
+  
+                  },
+  
+                  "qualityScoreWeights": {
+  
+                    "type": "array",
+  
+                    "items": {
+  
+                      "type": "object",
+  
+                      "required": ["calendarYear", "locationDisplayName", "weight", "baseline"],
+  
+                      "properties": {
+  
+                        "calendarYear": {
+  
+                          "type": "integer"
+  
+                        },
+  
+                        "locationDisplayName": {
+  
+                          "type": "string"
+  
+                        },
+  
+                        "weight": {
+  
+                          "type": "number"
+  
+                        },
+  
+                        "baseline": {
+  
+                          "type": "integer"
+  
+                        }
+  
+                      }
+  
+                    }
+  
+                  }
+  
+                }
+  
+              }
+  
+            },
+  
+            "includedLobNames": {
+  
+              "type": "array",
+  
+              "items": {
+  
+                "type": ["string", "null"]
+  
+              }
+  
+            }
+  
+          }
+  
+        }
+  
+      },
+  
+      "payerSuppliedMeasureMap": {
+  
+        "type": "array",
+  
+        "items": {
+  
+          "type": "object",
+  
+          "required": ["payerSource", "payerMeasureName", "arcadiaMeasureName", "arcadiaMeasureRate"],
+  
+          "properties": {
+  
+            "payerSource": {
+  
+              "type": "string"
+  
+            },
+  
+            "payerMeasureName": {
+  
+              "type": "string"
+  
+            },
+  
+            "arcadiaMeasureName": {
+  
+              "type": "string"
+  
+            },
+  
+            "arcadiaMeasureRate": {
+  
+              "type": "string"
+  
+            }
+  
+          }
+  
+        }
+  
+      }
+  
+    }
+  
+  }
