@@ -49,7 +49,8 @@ exec sp_executesql @tsql
 
 -- main output --
 select
-  i.name [initiativeName]
+ROW_NUMBER() OVER(order by i.name,am.name,am.rate) AS rowNum
+,  i.name [initiativeName]
 , am.name [backendName]
 , am.rate [rate]
 , im.Threshold
@@ -77,6 +78,7 @@ select
 , #psm.payerMeasureName
 , #psm.arcadiaMeasureName
 , #psm.arcadiaMeasureRate
+, li.LobName
 from web.InitiativeMeasure im
     inner join web.Initiative i on im.InitiativeID = i.InitiativeID
     inner join rpt.ArcasMeasure am on im.measureid = am.measureid
@@ -90,7 +92,8 @@ from web.InitiativeMeasure im
 	left join #psm
 		on #psm.arcadiaMeasureName = am.name
 		and #psm.arcadiaMeasureRate = am.rate
+	left join web.LobInitiative li
+		on li.InitiativeId = im.InitiativeID
 where im.MeasureEnabled = 1
     and i.InitiativeEnabled = 1
 order by 1,2,3,4,5,6,7,8
-
