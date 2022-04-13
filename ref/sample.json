@@ -1,0 +1,290 @@
+{
+    "initiatives": [
+        {
+            "name": "SWHR ALL - Providers",
+            "assignedMeasures": [
+                {
+                    "measure": "CMS139v8FallRiskScreen",
+                    "rate": "Default",
+                    "displayName": "Fall Risk Screen",
+                    "displayDescription": "Fall Risk Screen (CMS139v8)",
+                    "displayShortName": "CMS139"
+                },
+                {
+                    "measure": "CMS147v9InfluenzaImmunization",
+                    "rate": "Default",
+                    "displayName": "Influenza Immunization",
+                    "displayDescription": "Influenza Immunization (CMS147v9)",
+                    "displayShortName": "CMS147v9"
+                },
+                {
+                    "measure": "CMS138v8TobaccoScreening",
+                    "rate": "Default",
+                    "displayName": "Tobacco Screen",
+                    "displayDescription": "Tobacco Screen (CMS138v8)",
+                    "displayShortName": "CMS138v8S"
+                },
+                {
+                    "measure": "CMS138v8TobaccoIntervention",
+                    "rate": "Default",
+                    "displayName": "Tobacco Intervention",
+                    "displayDescription": "Tobacco Intervention (CMS138v8)",
+                    "displayShortName": "CMS138v8I"
+                },
+                {
+                    "measure": "CMS138v8TobaccoScreenIntervention",
+                    "rate": "Default",
+                    "displayName": "Tobacco Screen/Intervention",
+                    "displayDescription": "Tobacco Screen and Intervention (CMS138v8)",
+                    "displayShortName": "CMS138v8SI"
+                },
+                {
+                    "measure": "CMS2v9DepressionScreen",
+                    "rate": "Default",
+                    "displayName": "Depression Screen",
+                    "displayDescription": "Depression Screen (CMS2v9)",
+                    "displayShortName": "CMS2v9"
+                },
+                {
+                    "measure": "CMS130v8ColorectalCancerScreening",
+                    "rate": "Default",
+                    "displayName": "Colorectal Cancer Screen",
+                    "displayDescription": "Colorectal Cancer Screen (CMS130v8)",
+                    "displayShortName": "CMS130v8"
+                },
+                {
+                    "measure": "CMS125v8BreastCancerScreen",
+                    "rate": "Default",
+                    "displayName": "Breast Cancer Screen",
+                    "displayDescription": "Breast Cancer Screen (CMS125v8)",
+                    "displayShortName": "CMS125v8"
+                },
+                {
+                    "measure": "CMS165v8ControllingHighBP",
+                    "rate": "Default",
+                    "displayName": "Controlling High BP",
+                    "displayDescription": "Controlling High Blood Pressure (CMS165v8)",
+                    "displayShortName": "CMS165v8"
+                },
+                {
+                    "measure": "CMS159v8DepressionRemission12to18",
+                    "rate": "Default",
+                    "displayName": "Depression Remission 12-18",
+                    "displayDescription": "Depression Remission 12-18 (CMS159v8)",
+                    "displayShortName": "CMS159v8"
+                },
+                {
+                    "measure": "CMS159v8DepressionRemission18plus",
+                    "rate": "Default",
+                    "displayName": "Depression Remission 18+",
+                    "displayDescription": "Depression Remission 18+ (CMS159v8)",
+                    "displayShortName": "CMS159v8"
+                },
+                {
+                    "measure": "CMS159v8DepressionRemissionTotal",
+                    "rate": "Default",
+                    "displayName": "Depression Remission Total",
+                    "displayDescription": "Depression Remission Total+ (CMS159v8)",
+                    "displayShortName": "CMS159v8"
+                },
+                {
+                    "measure": "CMS122v8DiabetesHemoglobinA1cPoorControl",
+                    "rate": "Default",
+                    "displayName": "Diabetes A1c Poor Control",
+                    "displayDescription": "Diabetes A1c Poor Control (CMS122v8)",
+                    "displayShortName": "CMS122v8PC"
+                },
+                {
+                    "measure": "CMS122v8DiabetesHemoglobinA1cNotPoorControl",
+                    "rate": "Default",
+                    "displayName": "Diabetes A1c Control",
+                    "displayDescription": "Diabetes A1c Control (CMS122v8)",
+                    "displayShortName": "CMS122v8C"
+                },
+                {
+                    "measure": "CMS347v3StatinCVD",
+                    "rate": "Default",
+                    "displayName": "Statin CVD",
+                    "displayDescription": "Statin CVD (CMS347v3)",
+                    "displayShortName": "CMS347v3"
+                },
+                {
+                    "measure": "CMS127v8PneumococcalImmunization",
+                    "rate": "Default",
+                    "displayName": "Pneumococcal mmunization",
+                    "displayDescription": "Statin CVD (CMS127v8)",
+                    "displayShortName": "CMS127v8"
+                }
+            ],
+            "includedLobNames": [
+                "Humana | Medicare HMO | Medicare HMO",
+                "Humana | Medicare PFFS | Medicare PFFS",
+                "Humana | Medicare PPO | Medicare PPO",
+                null
+            ]
+        },
+        {
+            "name": "Certified HEDIS MY2020",
+            "assignedMeasures": [
+                {
+                    "measure": "HEDISMY2020BCS",
+                    "rate": "alp.cln.nec",
+                    "displayName": "Breast Cancer Screen",
+                    "displayDescription": "Breast Cancer Screen (BCS)",
+                    "displayShortName": "BCS",
+                    "qualityScoreThresholds": [
+                        {
+                            "calendarYear": 2020,
+                            "thresholds": [
+                                0.1524,
+                                0.3324,
+                                0.4598,
+                                0.6578
+                            ],
+                            "factors": [
+                                0,
+                                0,
+                                0.5,
+                                0.75,
+                                1
+                            ]
+                        }
+                    ],
+                    "qualityScoreWeights": [
+                        {
+                            "calendarYear": 2020,
+                            "locationDisplayName": "CareFirst Primary and Wellness Center",
+                            "weight": 1.0,
+                            "baseline": 1
+                        }
+                    ]
+                },
+                {
+                    "measure": "HEDISMY2020COL",
+                    "rate": "alp.cln.nec",
+                    "displayName": "Colorectal Cancer Screen",
+                    "displayDescription": "Colorectal Cancer Screen (COL)",
+                    "displayShortName": "COL",
+                    "qualityScoreThresholds": [
+                        {
+                            "calendarYear": 2020,
+                            "thresholds": [
+                                0.1,
+                                0.2,
+                                0.3,
+                                0.4
+                            ],
+                            "factors": [
+                                0,
+                                0,
+                                0.5,
+                                0.75,
+                                1
+                            ]
+                        }
+                    ],
+                    "qualityScoreWeights": [
+                        {
+                            "calendarYear": 2020,
+                            "locationDisplayName": "CareFirst Primary and Wellness Center",
+                            "weight": 2.0,
+                            "baseline": 2
+                        }
+                    ]
+                },
+                {
+                    "measure": "HEDISMY2020CWP",
+                    "rate": "alp.cln.nec",
+                    "displayName": "Child Pharyngitis Testing",
+                    "displayDescription": "Appropriate Testing for Children With Pharyngitis (CWP)",
+                    "displayShortName": "CWP",
+                    "qualityScoreThresholds": [
+                        {
+                            "calendarYear": 2020,
+                            "thresholds": [
+                                0.2,
+                                0.3,
+                                0.4,
+                                0.5
+                            ],
+                            "factors": [
+                                0,
+                                0,
+                                0.5,
+                                0.75,
+                                1
+                            ]
+                        }
+                    ],
+                    "qualityScoreWeights": [
+                        {
+                            "calendarYear": 2020,
+                            "locationDisplayName": "CareFirst Primary and Wellness Center",
+                            "weight": 3.0,
+                            "baseline": 3
+                        }
+                    ]
+                },
+                {
+                    "measure": "HEDISMY2020CDC1",
+                    "rate": "alp.cln.nec",
+                    "displayName": "A1c Testing",
+                    "displayDescription": "A1c Testing (CDC1)",
+                    "displayShortName": "CDC1",
+                    "qualityScoreThresholds": [
+                        {
+                            "calendarYear": 2020,
+                            "thresholds": [
+                                0.5,
+                                0.6,
+                                0.7,
+                                0.8
+                            ],
+                            "factors": [
+                                0,
+                                0,
+                                0.5,
+                                0.75,
+                                1
+                            ]
+                        }
+                    ],
+                    "qualityScoreWeights": [
+                        {
+                            "calendarYear": 2020,
+                            "locationDisplayName": "CareFirst Primary and Wellness Center",
+                            "weight": 4.0,
+                            "baseline": 4
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "payerSuppliedMeasureMap": [
+        {
+            "payerSource": "118",
+            "payerMeasureName": "BCS",
+            "arcadiaMeasureName": "HEDISMY2020BCS",
+            "arcadiaMeasureRate": "alp.cln.nec"
+        },
+        {
+            "payerSource": "118",
+            "payerMeasureName": "COL",
+            "arcadiaMeasureName": "HEDISMY2020COL",
+            "arcadiaMeasureRate": "alp.cln.nec"
+        },
+        {
+            "payerSource": "118",
+            "payerMeasureName": "CMS125",
+            "arcadiaMeasureName": "CMS125v8BreastCancerScreen",
+            "arcadiaMeasureRate": "Default"
+        },
+        {
+            "payerSource": "118",
+            "payerMeasureName": "CMS130",
+            "arcadiaMeasureName": "CMS130v8ColorectalCancerScreening",
+            "arcadiaMeasureRate": "Default"
+        }
+    ]
+}
