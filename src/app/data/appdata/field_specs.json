@@ -1,0 +1,160 @@
+{
+    "fields":[
+        {
+            "name":"rowNum",
+            "specifications":
+            {
+                "nullable": "false",
+                "datatype": "int"
+            }
+        },
+        {
+            "name":"initiativeName",
+            "specifications":
+            {
+                "nullable": "false",
+                "datatype": "string",
+                "maxLength": "255"
+
+            }
+        },
+        {
+            "name":"backendName",
+            "specifications":
+            {
+                "nullable": "false",
+                "datatype": "string",
+                "maxLength": "50"
+            }
+        },
+        {
+            "name":"rate",
+            "specifications":
+            {
+                "nullable": "true",
+                "datatype": "string",
+                "maxLength": "50"
+            }
+        },
+        {
+            "name":"threshold",
+            "specifications":
+            {
+                "nullable": "true",
+                "datatype": "float"
+            }
+        },
+        {
+            "name":"thresholdDirection",
+            "specifications":
+            {
+                "nullable": "true",
+                "datatype": "int"
+            }
+        },
+        {
+            "name":"displayName",
+            "specifications":
+            {
+                "nullable": "true",
+                "datatype": "string",
+                "maxLength": "30"
+            }
+        },
+        {
+            "name":"displayDescription",
+            "specifications":
+            {
+                "nullable": "true",
+                "datatype": "string"
+            }
+        },
+        {
+            "name":"calendarYear",
+            "specifications":
+            {
+                "nullable": "true",
+                "datatype": "int",
+                "regex": "^[1-2]{1}[0-9]{3}$"
+            }
+        },
+        {
+            "name":"factor",
+            "specifications":
+            {
+                "nullable": "true",
+                "datatype": "float"
+            }
+        },
+        {
+            "name":"locationDisplayName",
+            "specifications":
+            {
+                "nullable": "true",
+                "datatype": "string",
+                "maxLength": "100"
+            }
+        },
+        {
+            "name":"weight",
+            "specifications":
+            {
+                "nullable": "true",
+                "datatype": "float"
+            }
+        },
+        {
+            "name":"baseline",
+            "specifications":
+            {
+                "nullable": "true",
+                "datatype": "int"
+            }
+        },
+        {
+            "name":"payerSource",
+            "specifications":
+            {
+                "nullable": "true",
+                "datatype": "string",
+                "maxLength":"255"
+            }
+        },
+        {
+            "name":"payerMeasureName",
+            "specifications":
+            {
+                "nullable": "true",
+                "datatype": "string",
+                "maxLength":"255"
+            }
+        },
+        {
+            "name":"arcadiaMeasureName",
+            "specifications":
+            {
+                "nullable": "true",
+                "datatype": "string",
+                "maxLength":"50"
+            }
+        },
+        {
+            "name":"arcadiaMeasureRate",
+            "specifications":
+            {
+                "nullable": "true",
+                "datatype": "string",
+                "maxLength":"50"
+            }
+        },
+        {
+            "name":"lobName",
+            "specifications":
+            {
+                "nullable": "true",
+                "datatype": "string",
+                "maxLength":"255"
+            }
+        }
+    ]
+}
