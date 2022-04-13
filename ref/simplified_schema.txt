@@ -1,0 +1,25 @@
+initiatives (list) -> n/a
+    name (string) -> initiative_name
+    assignedmeasures (list) -> n/a
+        measure (string) -> backendName
+        rate (string) -> rate
+        threshold (string) -> 
+        thresholdDirection ->
+        displayName (string) 
+        displayDescription (string)
+        displayShortName (string)
+        qualityScoreThresholds (list)
+            calendarYear (int)
+            thresholds (list/floats)
+            factors (list/floats)
+        qualityScoreWeights (list)
+            calendarYear (int)
+            locationDisplayName (string)
+            weight (float)
+            baseline (int)
+    includedLOBNames
+payerSuppliedMeasureMap (list)
+    payerSource (string)
+    payerMeasureName(string)
+    arcadiaMeasureName (string)
+    arcadiaMeasureRate (string)
