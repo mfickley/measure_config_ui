@@ -53,23 +53,23 @@ ROW_NUMBER() OVER(order by i.name,am.name,am.rate) AS rowNum
 ,  i.name [initiativeName]
 , am.name [backendName]
 , am.rate [rate]
-, im.Threshold
-, im.ThresholdDirection
+, im.Threshold [threshold]
+, im.ThresholdDirection [thresholdDirection]
 , im.MeasureDisplayName [displayName]
 , im.MeasureDescription [displayDescription]
 , im.MeasureShortName [displayShortName]
 --, am.MeasureID
 --, '' as script
 , qst.CalendarYear [qst_calendarYear]
-, qst.Threshold1 [qst_Threshold1]
-, qst.Threshold2 [qst_Threshold2]
-, qst.Threshold3 [qst_Threshold3]
-, qst.Threshold4 [qst_Threshold4]
-, qst.Factor0 [qst_Factor0]
-, qst.Factor1 [qst_Factor1]
-, qst.Factor2 [qst_Factor2]
-, qst.Factor3 [qst_Factor3]
-, qst.Factor4 [qst_Factor4]
+, qst.Threshold1 [qst_threshold1]
+, qst.Threshold2 [qst_threshold2]
+, qst.Threshold3 [qst_threshold3]
+, qst.Threshold4 [qst_threshold4]
+, qst.Factor0 [qst_factor0]
+, qst.Factor1 [qst_factor1]
+, qst.Factor2 [qst_factor2]
+, qst.Factor3 [qst_factor3]
+, qst.Factor4 [qst_factor4]
 , #qsw.CalendarYear [qsw_calendarYear]
 , #qsw.locationDisplayName [qsw_locationDisplayName]
 , #qsw.Weight [qsw_weight]
@@ -78,7 +78,7 @@ ROW_NUMBER() OVER(order by i.name,am.name,am.rate) AS rowNum
 , #psm.payerMeasureName
 , #psm.arcadiaMeasureName
 , #psm.arcadiaMeasureRate
-, li.LobName
+, li.lobName
 from web.InitiativeMeasure im
     inner join web.Initiative i on im.InitiativeID = i.InitiativeID
     inner join rpt.ArcasMeasure am on im.measureid = am.measureid
