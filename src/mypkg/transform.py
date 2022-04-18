@@ -5,13 +5,29 @@
 # Imports
 import pandas as pd
 import json
+import argparse
+
+#argparse parameters
+parser = argparse.ArgumentParser(description = 'Reads in a measure config file and returns all required formats')
+# parser.add_argument('--testrun',choices=['regression','test'])
+# parser.add_argument('--sql', action='store_true', help='will return qdw validation query')
+# parser.add_argument('--mdb', action='store_true', help='will return measure database validation query')
+# parser.add_argument('--inputFileOverride',default= "measure_template_v2.csv",help='file to ingest')
+parser.add_argument('--outputFileOverride',default= "./ref/test.json",help='file to output to')
+# parser.add_argument('--errorLogOverride',default= "./output/ErrorLog.txt",help='file to output errors to')
+# parser.add_argument('--forceoutput',action='store_true',help='will force script to return output even if there are errors')
+args = parser.parse_args()
 
 # Module Constants
-CUSTOMER_ACRONYM = "CCF"
+CUSTOMER_ACRONYM = "ccf"
+NAMESPACE = 'uat'
+INFRASTRUCTURE = 'installation2'
+OUTPUT_PATH = args.outputFileOverride
 
 # Module "Global" Variables
 global_variable_file = "file.txt"
 schema = ""
+
 
 # Module Functions and Classes
 def main():
@@ -81,7 +97,7 @@ def main():
         init_index+=1
 
     with open(
-        "./ref/test.json", "w"
+        OUTPUT_PATH, "w"
     ) as outputFile:
         # Writing data to a file
         outputFile.writelines(json.dumps(dict))
