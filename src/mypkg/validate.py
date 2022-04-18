@@ -12,7 +12,4 @@ def is_name_rate_valid(backendName,rate):
     return not (df[(df["Backend Name"] == backendName) & (df["Backend Rate"] == rate)].empty)
 
 if __name__ == "__main__":
-    print(is_name_rate_valid(backendName='CMSACO2020PREV7',rate='Default')) #good
-    print(is_name_rate_valid(backendName='CMSACO2020PEV7',rate='Default'))  #bad name
-    print(is_name_rate_valid(backendName='CMSACO2020PEV7',rate='Defaultr')) #bad rate
-    print(is_name_rate_valid(backendName='CMSACO2020PREV7',rate='Defaultr'))#both bad
+    pass
