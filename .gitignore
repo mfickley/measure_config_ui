@@ -131,6 +131,9 @@ fabric.properties
 .listen_test
 *codekit-config.json
 
+#application output
+app/data/output/
+app/data/uploads/
 
 # VS Code
 .vscode/launch.json
