@@ -50,35 +50,35 @@ exec sp_executesql @tsql
 -- main output --
 select
 ROW_NUMBER() OVER(order by i.name,am.name,am.rate) AS rowNum
-,  i.name [initiativeName]
-, am.name [backendName]
+,  i.name [initiative]
+, am.name [measure]
 , am.rate [rate]
-, im.Threshold [threshold]
-, im.ThresholdDirection [thresholdDirection]
-, im.MeasureDisplayName [displayName]
-, im.MeasureDescription [displayDescription]
-, im.MeasureShortName [displayShortName]
+, cast(im.Threshold as decimal(10,4)) [threshold]
+, im.ThresholdDirection [thresholddirection]
+, im.MeasureDisplayName [displayname]
+, im.MeasureDescription [displaydescription]
+, im.MeasureShortName [displayshortname]
 --, am.MeasureID
 --, '' as script
-, qst.CalendarYear [qst_calendarYear]
-, qst.Threshold1 [qst_threshold1]
-, qst.Threshold2 [qst_threshold2]
-, qst.Threshold3 [qst_threshold3]
-, qst.Threshold4 [qst_threshold4]
-, qst.Factor0 [qst_factor0]
-, qst.Factor1 [qst_factor1]
-, qst.Factor2 [qst_factor2]
-, qst.Factor3 [qst_factor3]
-, qst.Factor4 [qst_factor4]
-, #qsw.CalendarYear [qsw_calendarYear]
-, #qsw.locationDisplayName [qsw_locationDisplayName]
-, #qsw.Weight [qsw_weight]
-, #qsw.Baseline [qsw_baseline]
-, #psm.payerSource
-, #psm.payerMeasureName
-, #psm.arcadiaMeasureName
-, #psm.arcadiaMeasureRate
-, li.lobName
+, qst.CalendarYear [qst_calendaryear]
+, qst.Threshold1 [threshold1]
+, qst.Threshold2 [threshold2]
+, qst.Threshold3 [threshold3]
+, qst.Threshold4 [threshold4]
+, qst.Factor0 [factor0]
+, qst.Factor1 [factor1]
+, qst.Factor2 [factor2]
+, qst.Factor3 [factor3]
+, qst.Factor4 [factor4]
+, #qsw.CalendarYear [qsw_calendaryear]
+, #qsw.locationDisplayName [locationdisplayname]
+, #qsw.Weight [weight]
+, #qsw.Baseline [baseline]
+, #psm.payerSource [sourcepartition]
+, #psm.payerMeasureName [payersuppliedname]
+, #psm.arcadiaMeasureName [arcadianame]
+, #psm.arcadiaMeasureRate [arcadiarate]
+, li.lobName [lobname]
 from web.InitiativeMeasure im
     inner join web.Initiative i on im.InitiativeID = i.InitiativeID
     inner join rpt.ArcasMeasure am on im.measureid = am.measureid
