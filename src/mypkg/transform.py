@@ -6,103 +6,190 @@
 import pandas as pd
 import json
 import argparse
+import time
 
 #argparse parameters
 parser = argparse.ArgumentParser(description = 'Reads in a measure config file and returns all required formats')
-# parser.add_argument('--testrun',choices=['regression','test'])
-# parser.add_argument('--sql', action='store_true', help='will return qdw validation query')
-# parser.add_argument('--mdb', action='store_true', help='will return measure database validation query')
-# parser.add_argument('--inputFileOverride',default= "measure_template_v2.csv",help='file to ingest')
-parser.add_argument('--outputFileOverride',default= "./ref/test.json",help='file to output to')
-# parser.add_argument('--errorLogOverride',default= "./output/ErrorLog.txt",help='file to output errors to')
-# parser.add_argument('--forceoutput',action='store_true',help='will force script to return output even if there are errors')
+parser.add_argument('--flatfile',action='store_true',help='sets all dataframes based on a single file instead of multiple components')
+parser.add_argument('--measurePackage',action='store_true',help='exports a formatted measure package as well')
+parser.add_argument('--outputFileOverride',help='file to output to')
 args = parser.parse_args()
 
 # Module Constants
-CUSTOMER_ACRONYM = "ccf"
-NAMESPACE = 'uat'
-INFRASTRUCTURE = 'installation2'
-OUTPUT_PATH = args.outputFileOverride
+# CUSTOMER_ACRONYM = "ccf"
+# NAMESPACE = 'uat'
+# INFRASTRUCTURE = 'installation2'
+if args.outputFileOverride is None:
+    OUTPUT_PATH = f'./src/app/data/output/measure_ui_config_{time.strftime("%Y%m%d-%H%M%S")}.json'
+else:
+    OUTPUT_PATH = args.outputFileOverride
+    
 
 # Module "Global" Variables
-global_variable_file = "file.txt"
-schema = ""
+if args.flatfile == False:
+    print("Loading from multi-file source...")
+    initiativeFrame = pd.read_csv(r"./src/app/data/uploads/initiative.csv")
+    measureFrame = pd.read_csv(r"./src/app/data/uploads/initiativemeasure.csv")
+    lobFrame = pd.read_csv(r"./src/app/data/uploads/initiativelob.csv")
+    thresholdFrame = pd.read_csv(r"./src/app/data/uploads/qualityscorethreshold.csv")
+    weightFrame = pd.read_csv(r"./src/app/data/uploads/qualityscoreweight.csv")
+    payerSuppliedFrame = pd.read_csv(r"./src/app/data/uploads/payersuppliedmeasuremap.csv",dtype={'sourcepartition':str})
 
+if args.flatfile == True:
+    print("Loading from flat file source...")
+    flat = pd.read_csv(r"./src/app/data/uploads/qdw_export.csv",dtype={'sourcepartition':str})
+    measureFrame = pd.DataFrame(flat,columns=['initiative','measure','rate','threshold','thresholddirection','displayname','displaydescription','displayshortname']).drop_duplicates().dropna()
+    lobFrame = pd.DataFrame(flat,columns=['initiative','lobname']).drop_duplicates().dropna(thresh=1)
+    thresholdFrame = pd.DataFrame(flat,columns=['initiative','measure','rate','qst_calendaryear','threshold1','threshold2','threshold3','threshold4','factor0','factor1','factor2','factor3','factor4']).drop_duplicates().dropna()
+    weightFrame = pd.DataFrame(flat,columns=['initiative','measure','rate','qsw_calendaryear','locationdisplayname','weight','baseline']).drop_duplicates().dropna()
+    payerSuppliedFrame = pd.DataFrame(flat,columns=['sourcepartition','payersuppliedname','arcadianame','arcadiarate']).drop_duplicates().dropna()
+
+#update column names to fit json schema
+
+measureFrame = measureFrame.rename(columns={
+    "thresholddirection":"thresholdDirection"
+    ,'displayorder':'displayOrder'
+    ,'displayname':'displayName'
+    ,'displayshortname':'displayShortName'
+    ,'displaydescription':'displayDescription'})
+
+thresholdFrame = thresholdFrame.rename(columns={
+    "calendaryear":"calendarYear"
+    ,'qst_calendaryear':'calendarYear'})
+
+weightFrame = weightFrame.rename(columns={
+    "calendaryear":"calendarYear"
+    ,'locationdisplayname':'locationDisplayName'
+    ,'qsw_calendaryear':'calendarYear'
+})
+
+payerSuppliedFrame = payerSuppliedFrame.rename(columns={
+'sourcepartition':'payerSource',
+'payersuppliedname':'payerMeasureName'
+,'arcadianame':'arcadiaMeasureName'
+,'arcadiarate':'arcadiaMeasureRate'
+})
 
 # Module Functions and Classes
+def assignedMeasureList(initiative):
+    df = pd.DataFrame(measureFrame[
+        (measureFrame["initiative"] == initiative)]
+        ,columns=(['measure','rate','threshold','thresholdDirection','displayName','displayDescription','displayShortName'])).drop_duplicates()
+
+    #df = df.rename(columns={"backendName":"measure"})
+    df['thresholdDirection'] = df['thresholdDirection'].astype(bool)
+    measureList = pd.DataFrame.to_dict(df, orient="records")
+
+    for measure in measureList:
+        thresholds = thresholdList(initiative,measure['measure'],measure['rate'])
+        weights = weightList(initiative,measure['measure'],measure['rate'])
+
+        if len(thresholds) > 0:
+            measure['qualityScoreThresholds'] = thresholds
+        if len(weights) > 0:
+            measure['qualityScoreWeights'] = weights
+    
+    return measureList
+
+def thresholdList(initiative,measure,rate):
+    output = []
+    df = pd.DataFrame(thresholdFrame[
+        (thresholdFrame["initiative"] == initiative) &
+        (thresholdFrame["measure"] == measure) & 
+        (thresholdFrame["rate"] == rate)]
+        ,columns=(["calendarYear"
+                , "threshold1"
+                , "threshold2"
+                , "threshold3"
+                , "threshold4"
+                , "factor0"
+                , "factor1"
+                , "factor2"
+                , "factor3"
+                , "factor4"])).drop_duplicates()
+
+    df = df.astype({'calendarYear':int})
+
+    for index,row in df.iterrows():
+        if row['calendarYear'] > 0:
+            thresholds = list(row['threshold1':'threshold4'])
+            factors = list(row['factor0':'factor4'])
+            output.append({"calendarYear":row['calendarYear']
+                                                ,'thresholds':thresholds
+                                                ,'factors':factors})
+    return output
+
+def weightList(initiative,measure,rate):
+    output = []
+    #adding in weights
+    df = pd.DataFrame(weightFrame[
+        (weightFrame["initiative"] == initiative) & 
+        (weightFrame["measure"] == measure) & 
+        (weightFrame["rate"] == rate)]
+        ,columns=(["calendarYear", 
+                "locationDisplayName", 
+                "weight", 
+                "baseline"])).drop_duplicates()
+
+    df = df.astype({'calendarYear':int,'baseline':int})
+
+    for index,row in df.iterrows():
+        if row['calendarYear'] > 0:
+            output.append({"calendarYear":row['calendarYear'],
+                                            'locationDisplayName':row['locationDisplayName'],
+                                            'weight':row['weight'],
+                                            'baseline':row['baseline']})
+    return output
+
 def main():
-    df = pd.read_csv(
-        r"./src/app/data/uploads/template.csv"
-    )
-
-    df['qst_calendarYear'] = df['qst_calendarYear'].fillna(0).astype(int)
-    df['qsw_calendarYear'] = df['qsw_calendarYear'].fillna(0).astype(int)
-    
+    #declare initiatives
     dict = {"initiatives": []}
-    init_index = 0
-    initiatives = df["initiativeName"].unique()
-    
+    initiatives = measureFrame["initiative"].unique()
+
+    #iterate through initiatives and add assigned measures
     for initiative in initiatives:
-        # build list of measures for that initiative
-        measureExtract = pd.DataFrame(df[df["initiativeName"] == initiative],columns=(["backendName","rate","threshold","thresholdDirection","displayName","displayShortName","displayDescription","qst_calendarYear", "qst_threshold1", "qst_threshold2", "qst_threshold3", "qst_threshold4","qst_factor0", "qst_factor1", "qst_factor2", "qst_factor3", "qst_factor4","qsw_calendarYear", "qsw_locationDisplayName", "qsw_weight", "qsw_baseline","lobName"]),).drop_duplicates().sort_values(by=["backendName", "rate"])
+        dict['initiatives'].append(
+            {
+            "name": initiative,
+            "assignedMeasures": assignedMeasureList(initiative),
+            "includedLobNames": list(lobFrame['lobname'].fillna('null').unique())
+            }
+        )
 
-        ##parse out first level of json
-        assignedMeasures = pd.DataFrame(measureExtract,columns=(["backendName","rate","threshold","thresholdDirection","displayName","displayShortName","displayDescription",]),).drop_duplicates().sort_values(by=["backendName", "rate"])
+    #add in payerSupplied data if it exists
+    if not payerSuppliedFrame.empty:
+        dict['payerSuppliedMeasureMap'] = pd.DataFrame.to_dict(payerSuppliedFrame, orient="records")
         
-        #add measures and lobs to initiative list
-        dict["initiatives"].append(
-            {"name": initiative,"assignedMeasures": pd.DataFrame.to_dict(assignedMeasures, orient="records")
-            ,"includedLobNames":list(measureExtract['lobName'].fillna('null').unique())})
-        
-        #go back through and add thresholds/weights
-        measure_index = 0
-        for measure in dict["initiatives"][init_index]['assignedMeasures']:
-            
-            #adding in multithreshold
-            qualityScoreThresholdsList = []
-            qs_df = pd.DataFrame(measureExtract[(measureExtract["backendName"] == measure['backendName']) & (measureExtract["rate"] == measure['rate'])]
-                                 ,columns=(["qst_calendarYear", "qst_threshold1", "qst_threshold2", "qst_threshold3", "qst_threshold4","qst_factor0", "qst_factor1", "qst_factor2", "qst_factor3", "qst_factor4"])).drop_duplicates()
-            
-            for index,row in qs_df.iterrows():
-                if row['qst_calendarYear'] > 0:
-                    thresholds = list(row['qst_threshold1':'qst_threshold4'])
-                    factors = list(row['qst_factor0':'qst_factor4'])
-
-                    qualityScoreThresholdsList.append({"calendarYear":row['qst_calendarYear']
-                                                       ,'thresholds':thresholds
-                                                       ,'factors':factors})
-            
-            #adding in weights
-            qualityScoreWeightsList = []
-            qw_df = pd.DataFrame(measureExtract[(measureExtract["backendName"] == measure['backendName']) & (measureExtract["rate"] == measure['rate'])]
-                                 ,columns=(["qsw_calendarYear", 
-                                            "qsw_locationDisplayName", 
-                                            "qsw_weight", 
-                                            "qsw_baseline"])).drop_duplicates()
-            
-            for index,row in qw_df.iterrows():
-                if row['qsw_calendarYear'] > 0:
-                    qualityScoreWeightsList.append({"calendarYear":row['qsw_calendarYear'],
-                                                    'locationDisplayName':row['qsw_locationDisplayName'],
-                                                    'weight':row['qsw_weight'],
-                                                    'baseline':row['qsw_baseline']})
-        
-            #ADD SCORES AND WEIGHTS TO MEASURE
-            if len(qualityScoreThresholdsList) > 0:
-                dict["initiatives"][init_index]['assignedMeasures'][measure_index]['qualityScoreThresholds'] = qualityScoreThresholdsList
-            if len(qualityScoreWeightsList) > 0:
-                dict["initiatives"][init_index]['assignedMeasures'][measure_index]['qualityScoreWeights'] = qualityScoreWeightsList
-        
-            measure_index += 1
-        init_index+=1
-
-    with open(
-        OUTPUT_PATH, "w"
-    ) as outputFile:
-        # Writing data to a file
+    #write out
+    with open(OUTPUT_PATH, "w") as outputFile:
         outputFile.writelines(json.dumps(dict))
+        print('Measure UI Config written to ' + outputFile.name)
 
-    print('Output written to ' + outputFile.name)
+    if args.measurePackage == True:
+
+        pkg = pd.DataFrame(measureFrame,columns=['measure','rate']).drop_duplicates().dropna()
+        ae = pd.read_csv(r"./src/app/data/appdata/airtable_measure_rates.csv")
+        ae = ae.rename(columns={"Backend Name":"measure",'Backend Rate':'rate','V6 Function Name':'script'})
+
+        df = pd.merge(pkg,ae,on=['measure','rate'])
+
+        dict = {
+                    "@type": "MeasureConfig",
+                    "properties": {
+                        "batchJobScale": "db.r5.8xlarge",
+                        "eligibilityLagMonths": 2
+                    },
+                    "calendarYears": 2,
+                    "trailingYears": 2,
+                    "measures": []
+                }
+        
+        for index,measure in df.iterrows():
+            dict['measures'].append([measure['script'],measure['rate']])
+
+        with open(f'./src/app/data/output/measure_pkg_config_{time.strftime("%Y%m%d-%H%M%S")}.json', "w") as outputFile:
+            outputFile.writelines(json.dumps(dict))
+            print('Measure Package written to ' + outputFile.name)
 
 if __name__ == "__main__":
     main()
