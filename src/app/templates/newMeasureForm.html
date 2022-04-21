@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  {% extends "template.html" %}
+  {% block content %}
+
+  <form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+      {{ form.initiative.label }} <br>
+      {{ form.initiative(size=32) }}
+    </p>
+    <p>
+      {{ form.specOwner.label }}<br>
+      {{ form.specOwner(size=1) }}
+    </p>
+    <p>
+      {{ form.backendName.label }}<br>
+      {{ form.backendName(size=1) }}
+    </p>
+    <p>
+      {{ form.rate.label }}<br>
+      {{ form.rate(size=1) }}
+    </p>
+    <p>
+      {{ form.threshold.label }}<br>
+      {{ form.threshold(size=32) }}
+    </p>
+    <p>
+      {{ form.shortname.label }}<br>
+      {{ form.shortname(size=32) }}
+    </p>
+    <p>
+      {{ form.description.label }}<br>
+      {{ form.description(size=32) }}
+    </p>
+    <p>{{ form.submit() }}</p>
+  </form>
+  {% endblock %}
+</body>
+
+</html>

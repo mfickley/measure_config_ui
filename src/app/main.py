@@ -3,10 +3,12 @@ import os
 from flask import Flask, render_template, request
 from flask_dropzone import Dropzone
 from werkzeug.utils import secure_filename
+from Forms import newMeasureForm
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
+app.secret_key = 'supersecretkey'
 app.config.update(
     UPLOAD_FOLDER=os.path.join(basedir, "uploads"),
     DROPZONE_MAX_FILE_SIZE=1024,
@@ -40,6 +42,11 @@ def home():
 @app.route("/about")
 def about():
     return render_template("about.html")
+
+@app.route("/create")
+def create():
+    form = newMeasureForm()
+    return render_template("newMeasureForm.html",title='this is a form',form=form)
 
 
 if __name__ == "__main__":
