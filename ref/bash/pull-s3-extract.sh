@@ -1,0 +1,1 @@
+aws s3 cp s3://s3-sandbox-artifacts-repo/measure-artifacts/airtable_measure_rates.csv ./src/app/data/appdata/airtable_measure_rates.csv
