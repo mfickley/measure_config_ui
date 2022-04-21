@@ -12,17 +12,23 @@ import time
 parser = argparse.ArgumentParser(description = 'Reads in a measure config file and returns all required formats')
 parser.add_argument('--flatfile',action='store_true',help='sets all dataframes based on a single file instead of multiple components')
 parser.add_argument('--measurePackage',action='store_true',help='exports a formatted measure package as well')
-parser.add_argument('--outputFileOverride',help='file to output to')
+parser.add_argument('--outputoverride',help='file to output to')
+parser.add_argument('--inputoverride',help='file to input !!!THIS ONLY WORKS IF --flatfile IS ALSO ENABLED!!!')
 args = parser.parse_args()
 
 # Module Constants
 # CUSTOMER_ACRONYM = "ccf"
 # NAMESPACE = 'uat'
 # INFRASTRUCTURE = 'installation2'
-if args.outputFileOverride is None:
+if args.outputoverride is None:
     OUTPUT_PATH = f'./src/app/data/output/measure_ui_config_{time.strftime("%Y%m%d-%H%M%S")}.json'
 else:
-    OUTPUT_PATH = args.outputFileOverride
+    OUTPUT_PATH = args.outputoverride
+
+if args.inputoverride is None:
+    INPUT_PATH = r'./src/app/data/uploads/qdw_export.csv'
+else:
+    INPUT_PATH = args.inputoverride
     
 
 # Module "Global" Variables
@@ -37,7 +43,7 @@ if args.flatfile == False:
 
 if args.flatfile == True:
     print("Loading from flat file source...")
-    flat = pd.read_csv(r"./src/app/data/uploads/qdw_export.csv",dtype={'sourcepartition':str})
+    flat = pd.read_csv(INPUT_PATH,dtype={'sourcepartition':str})
     measureFrame = pd.DataFrame(flat,columns=['initiative','measure','rate','threshold','thresholddirection','displayname','displaydescription','displayshortname']).drop_duplicates().dropna()
     lobFrame = pd.DataFrame(flat,columns=['initiative','lobname']).drop_duplicates().dropna(thresh=1)
     thresholdFrame = pd.DataFrame(flat,columns=['initiative','measure','rate','qst_calendaryear','threshold1','threshold2','threshold3','threshold4','factor0','factor1','factor2','factor3','factor4']).drop_duplicates().dropna()
