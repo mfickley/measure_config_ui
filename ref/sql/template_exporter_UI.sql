@@ -50,7 +50,10 @@ exec sp_executesql @tsql
 -- main output --
 select
 ROW_NUMBER() OVER(order by i.name,am.name,am.rate) AS rowNum
-,  i.name [initiative]
+, i.name [initiative]
+, i.PayerSuppliedInd [payersupplied]
+, i.InitiativeEnabled [enabled]
+, i.DisplayOrder [displayorder]
 , am.name [measure]
 , am.rate [rate]
 , cast(im.Threshold as decimal(10,4)) [threshold]
