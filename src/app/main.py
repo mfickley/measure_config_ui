@@ -9,7 +9,7 @@ from Forms import newMeasureForm
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
-app.secret_key = 'supersecretkey'
+app.secret_key = "supersecretkey"
 app.config.update(
     UPLOAD_FOLDER=os.path.join(basedir, "uploads"),
     DROPZONE_MAX_FILE_SIZE=1024,
@@ -19,9 +19,7 @@ app.config.update(
 
 dropzone = Dropzone(app)
 
-df = pd.DataFrame({'A': [0, 1, 2, 3, 4],
-                   'B': [5, 6, 7, 8, 9],
-                   'C': ['a', 'b', 'c--', 'd', 'e']})
+df = pd.read_csv(r".\src\app\data\uploads\initiativemeasure.csv")
 
 
 @app.route("/upload", methods=["POST", "GET"])
@@ -48,15 +46,18 @@ def home():
 def about():
     return render_template("about.html")
 
+
 @app.route("/create")
 def create():
     form = newMeasureForm()
-    return render_template("newMeasureForm.html",title='this is a form',form=form)
+    return render_template("newMeasureForm.html", title="this is a form", form=form)
+
 
 @app.route("/edit")
 def edit():
-    return render_template('edit.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
-
+    return render_template(
+        "edit.html", tables=[df.to_html(classes="data")], titles=df.columns.values
+    )
 
 
 if __name__ == "__main__":
