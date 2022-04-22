@@ -1,4 +1,5 @@
 import os
+import pandas as pd
 
 from flask import Flask, render_template, request
 from flask_dropzone import Dropzone
@@ -17,6 +18,10 @@ app.config.update(
 )
 
 dropzone = Dropzone(app)
+
+df = pd.DataFrame({'A': [0, 1, 2, 3, 4],
+                   'B': [5, 6, 7, 8, 9],
+                   'C': ['a', 'b', 'c--', 'd', 'e']})
 
 
 @app.route("/upload", methods=["POST", "GET"])
@@ -47,6 +52,11 @@ def about():
 def create():
     form = newMeasureForm()
     return render_template("newMeasureForm.html",title='this is a form',form=form)
+
+@app.route("/edit")
+def edit():
+    return render_template('edit.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
+
 
 
 if __name__ == "__main__":
