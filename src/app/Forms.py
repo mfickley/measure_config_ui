@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from flask import request
 from wtforms import SubmitField, StringField, validators, SelectField
 import pandas as pd
-import requests
+# import requests
 
 COMBOS = pd.read_csv(r"./src/app/data/appdata/airtable_measure_rates.csv")
 MEASURES = COMBOS["Backend Name"].values
