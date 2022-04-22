@@ -1,9 +1,9 @@
-# Flask==2.1.1
+Flask==2.1.1
 pytest==7.1.1
-# flask-inputs==0.3.0
-# jsonschema==3.0.1
-# jinja2==3.0.1
-# flask_dropzone==1.6.0
+flask-inputs==0.3.0
+jsonschema==3.0.1
+jinja2==3.0.1
+flask_dropzone==1.6.0
 pandas==1.2.4
 WTForms==3.0.1 
 flask-WTF==1.0.1
