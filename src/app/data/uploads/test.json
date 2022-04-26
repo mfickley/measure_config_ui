@@ -1,0 +1,757 @@
+{
+    "initiatives": [
+        {
+            "name": "MSSP",
+            "enabled": true,
+            "periodType": "Calendar Year",
+            "payerSupplied": false,
+            "assignedMeasures": [
+                {
+                    "measure": "CMSACO2020CARE2",
+                    "rate": "Default",
+                    "threshold": 0.9,
+                    "thresholdDirection": false,
+                    "displayName": "Fall Risk Screening",
+                    "displayDescription": "Patients 65 years of age and older who were screened for future fall risk during the measurement period",
+                    "displayShortName": "Falls"
+                },
+                {
+                    "measure": "CMSACO2020HTN2",
+                    "rate": "Default",
+                    "threshold": 0.9,
+                    "thresholdDirection": false,
+                    "displayName": "Control High BP",
+                    "displayDescription": "Percentage of patients 18 - 85 years of age who had a diagnosis of hypertension overlapping the measurement period and whose most recent blood pressure was adequately controlled (< 140/90 mmHg) during the measurement period",
+                    "displayShortName": "ACOBP"
+                },
+                {
+                    "measure": "CMSACO2020MH112to17",
+                    "rate": "Default",
+                    "threshold": 0.5,
+                    "thresholdDirection": false,
+                    "displayName": "Depression Remission 12-18",
+                    "displayDescription": "The percentage of adolescent patients 12 to 17 years of age with major depression or dysthymia who reached remission 12 months (+/- 60 days) after an index event.",
+                    "displayShortName": "Dep Rem-12"
+                },
+                {
+                    "measure": "CMSACO2020MH118plus",
+                    "rate": "Default",
+                    "threshold": 0.5,
+                    "thresholdDirection": false,
+                    "displayName": "Depression Remission 18+",
+                    "displayDescription": "The percentage of adolescent patients 18 years of age or older with major depression or dysthymia who reached remission 12 months (+/- 60 days) after an index event.",
+                    "displayShortName": "Dep Rem-12"
+                },
+                {
+                    "measure": "CMSACO2020NIPREV12",
+                    "rate": "Default",
+                    "threshold": 0.5,
+                    "thresholdDirection": false,
+                    "displayName": "Depression Screening",
+                    "displayDescription": "depression or dysthymia who reached remission 12 months (+/- 60 days) after an index event",
+                    "displayShortName": "DepScn"
+                },
+                {
+                    "measure": "CMSACO2020NIPREV13",
+                    "rate": "Default",
+                    "threshold": 0.5,
+                    "thresholdDirection": false,
+                    "displayName": "Statin Cardio Disease",
+                    "displayDescription": "Patients at cardiovascular risk who were prescribed or were on statin therapy",
+                    "displayShortName": "CD Prev"
+                },
+                {
+                    "measure": "CMSACO2020NotPoorControlDM2",
+                    "rate": "Default",
+                    "threshold": 0.9,
+                    "thresholdDirection": false,
+                    "displayName": "ACO DM >9",
+                    "displayDescription": "Percentage of patients 18 - 75 years of age with diabetes who had hemoglobin A1c > 9.0% during the measurement period",
+                    "displayShortName": "ACODM"
+                },
+                {
+                    "measure": "CMSACO2020PREV10Intervention",
+                    "rate": "Default",
+                    "threshold": 0.9,
+                    "thresholdDirection": false,
+                    "displayName": "Tobacco Intervention",
+                    "displayDescription": "Percentage of patients aged 18 years and older who were screened for tobacco use one or more times within 24 months AND who received tobacco cessation intervention if identified as a tobacco user",
+                    "displayShortName": "Tob Cess"
+                },
+                {
+                    "measure": "CMSACO2020PREV10Screen",
+                    "rate": "Default",
+                    "threshold": 0.9,
+                    "thresholdDirection": false,
+                    "displayName": "Tobacco Screening",
+                    "displayDescription": "Percentage of patients aged 18 years and older who were screened for tobacco usee",
+                    "displayShortName": "Tob Scrn"
+                },
+                {
+                    "measure": "CMSACO2020PREV10ScreenIntervention",
+                    "rate": "Default",
+                    "threshold": 0.9,
+                    "thresholdDirection": false,
+                    "displayName": "Tobacco Screen/Intervention",
+                    "displayDescription": "Percentage of patients aged 18 years and older who were screened for tobacco use one or more times within 24 months AND who received tobacco cessation intervention if identified as a tobacco user",
+                    "displayShortName": "Tob ScrInt"
+                },
+                {
+                    "measure": "CMSACO2020PREV5",
+                    "rate": "Default",
+                    "threshold": 0.9,
+                    "thresholdDirection": false,
+                    "displayName": "Breast Cancer Screening",
+                    "displayDescription": "Women 50-74 years of age who had a mammogram to screen for breast cancer in the 27 months prior to the end of the Measurement Period",
+                    "displayShortName": "Mammo"
+                },
+                {
+                    "measure": "CMSACO2020PREV6",
+                    "rate": "Default",
+                    "threshold": 0.9,
+                    "thresholdDirection": false,
+                    "displayName": "Colo Cancer Screen",
+                    "displayDescription": "Adults 50-75 years of age who had appropriate screening for colorectal cancer",
+                    "displayShortName": "Colo"
+                },
+                {
+                    "measure": "CMSACO2020PREV7",
+                    "rate": "Default",
+                    "threshold": 0.9,
+                    "thresholdDirection": false,
+                    "displayName": "Influenza Immunization",
+                    "displayDescription": "Patients aged 6 months and older seen for a visit between October 1 and March 31 who received an influenza immunization OR who reported previous receipt of an influenza immunization",
+                    "displayShortName": "Flu Imm"
+                }
+            ],
+            "includedLobNames": [
+                "null",
+                "MSSP | Mdcr",
+                "MSSP | NDS | Mdcr"
+            ]
+        },
+        {
+            "name": "MSSP-TEST",
+            "assignedMeasures": [
+                {
+                    "measure": "CMSACO2020CARE2",
+                    "rate": "Default",
+                    "threshold": 0.9,
+                    "thresholdDirection": false,
+                    "displayName": "Fall Risk Screening",
+                    "displayDescription": "Patients 65 years of age and older who were screened for future fall risk during the measurement period",
+                    "displayShortName": "Falls",
+                    "qualityScoreThresholds": [
+                        {
+                            "calendarYear": 2022.0,
+                            "thresholds": [
+                                0.25,
+                                0.5,
+                                0.7,
+                                1.0
+                            ],
+                            "factors": [
+                                1.0,
+                                2.0,
+                                3.0,
+                                4.0,
+                                5.0
+                            ]
+                        }
+                    ],
+                    "qualityScoreWeights": [
+                        {
+                            "calendarYear": 2022,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        },
+                        {
+                            "calendarYear": 2021,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        }
+                    ]
+                },
+                {
+                    "measure": "CMSACO2020HTN2",
+                    "rate": "Default",
+                    "threshold": 0.9,
+                    "thresholdDirection": false,
+                    "displayName": "Control High BP",
+                    "displayDescription": "Percentage of patients 18 - 85 years of age who had a diagnosis of hypertension overlapping the measurement period and whose most recent blood pressure was adequately controlled (< 140/90 mmHg) during the measurement period",
+                    "displayShortName": "ACOBP",
+                    "qualityScoreThresholds": [
+                        {
+                            "calendarYear": 2022.0,
+                            "thresholds": [
+                                0.25,
+                                0.5,
+                                0.7,
+                                1.0
+                            ],
+                            "factors": [
+                                1.0,
+                                2.0,
+                                3.0,
+                                4.0,
+                                5.0
+                            ]
+                        }
+                    ],
+                    "qualityScoreWeights": [
+                        {
+                            "calendarYear": 2022,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        },
+                        {
+                            "calendarYear": 2021,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        }
+                    ]
+                },
+                {
+                    "measure": "CMSACO2020MH112to17",
+                    "rate": "Default",
+                    "threshold": 0.5,
+                    "thresholdDirection": false,
+                    "displayName": "Depression Remission 12-18",
+                    "displayDescription": "The percentage of adolescent patients 12 to 17 years of age with major depression or dysthymia who reached remission 12 months (+/- 60 days) after an index event.",
+                    "displayShortName": "Dep Rem-12",
+                    "qualityScoreThresholds": [
+                        {
+                            "calendarYear": 2022.0,
+                            "thresholds": [
+                                0.25,
+                                0.5,
+                                0.7,
+                                1.0
+                            ],
+                            "factors": [
+                                1.0,
+                                2.0,
+                                3.0,
+                                4.0,
+                                5.0
+                            ]
+                        }
+                    ],
+                    "qualityScoreWeights": [
+                        {
+                            "calendarYear": 2022,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        },
+                        {
+                            "calendarYear": 2021,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        }
+                    ]
+                },
+                {
+                    "measure": "CMSACO2020MH118plus",
+                    "rate": "Default",
+                    "threshold": 0.5,
+                    "thresholdDirection": false,
+                    "displayName": "Depression Remission 18+",
+                    "displayDescription": "The percentage of adolescent patients 18 years of age or older with major depression or dysthymia who reached remission 12 months (+/- 60 days) after an index event.",
+                    "displayShortName": "Dep Rem-12",
+                    "qualityScoreThresholds": [
+                        {
+                            "calendarYear": 2022.0,
+                            "thresholds": [
+                                0.25,
+                                0.5,
+                                0.7,
+                                1.0
+                            ],
+                            "factors": [
+                                1.0,
+                                2.0,
+                                3.0,
+                                4.0,
+                                5.0
+                            ]
+                        }
+                    ],
+                    "qualityScoreWeights": [
+                        {
+                            "calendarYear": 2022,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        },
+                        {
+                            "calendarYear": 2021,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        }
+                    ]
+                },
+                {
+                    "measure": "CMSACO2020NIPREV12",
+                    "rate": "Default",
+                    "threshold": 0.5,
+                    "thresholdDirection": false,
+                    "displayName": "Depression Screening",
+                    "displayDescription": "depression or dysthymia who reached remission 12 months (+/- 60 days) after an index event",
+                    "displayShortName": "DepScn",
+                    "qualityScoreThresholds": [
+                        {
+                            "calendarYear": 2022.0,
+                            "thresholds": [
+                                0.25,
+                                0.5,
+                                0.7,
+                                1.0
+                            ],
+                            "factors": [
+                                1.0,
+                                2.0,
+                                3.0,
+                                4.0,
+                                5.0
+                            ]
+                        }
+                    ],
+                    "qualityScoreWeights": [
+                        {
+                            "calendarYear": 2022,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        },
+                        {
+                            "calendarYear": 2021,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        }
+                    ]
+                },
+                {
+                    "measure": "CMSACO2020NIPREV13",
+                    "rate": "Default",
+                    "threshold": 0.5,
+                    "thresholdDirection": false,
+                    "displayName": "Statin Cardio Disease",
+                    "displayDescription": "Patients at cardiovascular risk who were prescribed or were on statin therapy",
+                    "displayShortName": "CD Prev",
+                    "qualityScoreThresholds": [
+                        {
+                            "calendarYear": 2022.0,
+                            "thresholds": [
+                                0.25,
+                                0.5,
+                                0.7,
+                                1.0
+                            ],
+                            "factors": [
+                                1.0,
+                                2.0,
+                                3.0,
+                                4.0,
+                                5.0
+                            ]
+                        }
+                    ],
+                    "qualityScoreWeights": [
+                        {
+                            "calendarYear": 2022,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        },
+                        {
+                            "calendarYear": 2021,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        }
+                    ]
+                },
+                {
+                    "measure": "CMSACO2020NotPoorControlDM2",
+                    "rate": "Default",
+                    "threshold": 0.9,
+                    "thresholdDirection": false,
+                    "displayName": "ACO DM >9",
+                    "displayDescription": "Percentage of patients 18 - 75 years of age with diabetes who had hemoglobin A1c > 9.0% during the measurement period",
+                    "displayShortName": "ACODM",
+                    "qualityScoreThresholds": [
+                        {
+                            "calendarYear": 2022.0,
+                            "thresholds": [
+                                0.25,
+                                0.5,
+                                0.7,
+                                1.0
+                            ],
+                            "factors": [
+                                1.0,
+                                2.0,
+                                3.0,
+                                4.0,
+                                5.0
+                            ]
+                        }
+                    ],
+                    "qualityScoreWeights": [
+                        {
+                            "calendarYear": 2022,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        },
+                        {
+                            "calendarYear": 2021,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        }
+                    ]
+                },
+                {
+                    "measure": "CMSACO2020PREV10Intervention",
+                    "rate": "Default",
+                    "threshold": 0.9,
+                    "thresholdDirection": false,
+                    "displayName": "Tobacco Intervention",
+                    "displayDescription": "Percentage of patients aged 18 years and older who were screened for tobacco use one or more times within 24 months AND who received tobacco cessation intervention if identified as a tobacco user",
+                    "displayShortName": "Tob Cess",
+                    "qualityScoreThresholds": [
+                        {
+                            "calendarYear": 2022.0,
+                            "thresholds": [
+                                0.25,
+                                0.5,
+                                0.7,
+                                1.0
+                            ],
+                            "factors": [
+                                1.0,
+                                2.0,
+                                3.0,
+                                4.0,
+                                5.0
+                            ]
+                        }
+                    ],
+                    "qualityScoreWeights": [
+                        {
+                            "calendarYear": 2022,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        },
+                        {
+                            "calendarYear": 2021,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        }
+                    ]
+                },
+                {
+                    "measure": "CMSACO2020PREV10Screen",
+                    "rate": "Default",
+                    "threshold": 0.9,
+                    "thresholdDirection": false,
+                    "displayName": "Tobacco Screening",
+                    "displayDescription": "Percentage of patients aged 18 years and older who were screened for tobacco usee",
+                    "displayShortName": "Tob Scrn",
+                    "qualityScoreThresholds": [
+                        {
+                            "calendarYear": 2022.0,
+                            "thresholds": [
+                                0.25,
+                                0.5,
+                                0.7,
+                                1.0
+                            ],
+                            "factors": [
+                                1.0,
+                                2.0,
+                                3.0,
+                                4.0,
+                                5.0
+                            ]
+                        }
+                    ],
+                    "qualityScoreWeights": [
+                        {
+                            "calendarYear": 2022,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        },
+                        {
+                            "calendarYear": 2021,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        }
+                    ]
+                },
+                {
+                    "measure": "CMSACO2020PREV10ScreenIntervention",
+                    "rate": "Default",
+                    "threshold": 0.9,
+                    "thresholdDirection": false,
+                    "displayName": "Tobacco Screen/Intervention",
+                    "displayDescription": "Percentage of patients aged 18 years and older who were screened for tobacco use one or more times within 24 months AND who received tobacco cessation intervention if identified as a tobacco user",
+                    "displayShortName": "Tob ScrInt",
+                    "qualityScoreThresholds": [
+                        {
+                            "calendarYear": 2022.0,
+                            "thresholds": [
+                                0.25,
+                                0.5,
+                                0.7,
+                                1.0
+                            ],
+                            "factors": [
+                                1.0,
+                                2.0,
+                                3.0,
+                                4.0,
+                                5.0
+                            ]
+                        }
+                    ],
+                    "qualityScoreWeights": [
+                        {
+                            "calendarYear": 2022,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        },
+                        {
+                            "calendarYear": 2021,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        }
+                    ]
+                },
+                {
+                    "measure": "CMSACO2020PREV5",
+                    "rate": "Default",
+                    "threshold": 0.9,
+                    "thresholdDirection": false,
+                    "displayName": "Breast Cancer Screening",
+                    "displayDescription": "Women 50-74 years of age who had a mammogram to screen for breast cancer in the 27 months prior to the end of the Measurement Period",
+                    "displayShortName": "Mammo",
+                    "qualityScoreThresholds": [
+                        {
+                            "calendarYear": 2022.0,
+                            "thresholds": [
+                                0.25,
+                                0.5,
+                                0.7,
+                                1.0
+                            ],
+                            "factors": [
+                                1.0,
+                                2.0,
+                                3.0,
+                                4.0,
+                                5.0
+                            ]
+                        }
+                    ],
+                    "qualityScoreWeights": [
+                        {
+                            "calendarYear": 2022,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        },
+                        {
+                            "calendarYear": 2021,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        }
+                    ]
+                },
+                {
+                    "measure": "CMSACO2020PREV6",
+                    "rate": "Default",
+                    "threshold": 0.9,
+                    "thresholdDirection": false,
+                    "displayName": "Colo Cancer Screen",
+                    "displayDescription": "Adults 50-75 years of age who had appropriate screening for colorectal cancer",
+                    "displayShortName": "Colo",
+                    "qualityScoreThresholds": [
+                        {
+                            "calendarYear": 2022.0,
+                            "thresholds": [
+                                0.25,
+                                0.5,
+                                0.7,
+                                1.0
+                            ],
+                            "factors": [
+                                1.0,
+                                2.0,
+                                3.0,
+                                4.0,
+                                5.0
+                            ]
+                        }
+                    ],
+                    "qualityScoreWeights": [
+                        {
+                            "calendarYear": 2022,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        },
+                        {
+                            "calendarYear": 2021,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        }
+                    ]
+                },
+                {
+                    "measure": "CMSACO2020PREV7",
+                    "rate": "Default",
+                    "threshold": 0.9,
+                    "thresholdDirection": false,
+                    "displayName": "Influenza Immunization",
+                    "displayDescription": "Patients aged 6 months and older seen for a visit between October 1 and March 31 who received an influenza immunization OR who reported previous receipt of an influenza immunization",
+                    "displayShortName": "Flu Imm",
+                    "qualityScoreThresholds": [
+                        {
+                            "calendarYear": 2022.0,
+                            "thresholds": [
+                                0.25,
+                                0.5,
+                                0.7,
+                                1.0
+                            ],
+                            "factors": [
+                                1.0,
+                                2.0,
+                                3.0,
+                                4.0,
+                                5.0
+                            ]
+                        }
+                    ],
+                    "qualityScoreWeights": [
+                        {
+                            "calendarYear": 2022,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        },
+                        {
+                            "calendarYear": 2021,
+                            "locationDisplayName": "Martin Health",
+                            "weight": 1.0,
+                            "baseline": 1
+                        }
+                    ]
+                }
+            ],
+            "includedLobNames": [
+                "null",
+                "MSSP | Mdcr",
+                "MSSP | NDS | Mdcr"
+            ]
+        }
+    ],
+    "payerSuppliedMeasureMap": [
+        {
+            "payerSource": "10206",
+            "payerMeasureName": "FallRiskScreening-CCF",
+            "arcadiaMeasureName": "CMSACO2020CARE2",
+            "arcadiaMeasureRate": "Default"
+        },
+        {
+            "payerSource": "10206",
+            "payerMeasureName": "ControlHighBP-CCF",
+            "arcadiaMeasureName": "CMSACO2020HTN2",
+            "arcadiaMeasureRate": "Default"
+        },
+        {
+            "payerSource": "10206",
+            "payerMeasureName": "DepressionRemission12-18-CCF",
+            "arcadiaMeasureName": "CMSACO2020MH112to17",
+            "arcadiaMeasureRate": "Default"
+        },
+        {
+            "payerSource": "10206",
+            "payerMeasureName": "DepressionRemission18+-CCF",
+            "arcadiaMeasureName": "CMSACO2020MH118plus",
+            "arcadiaMeasureRate": "Default"
+        },
+        {
+            "payerSource": "10206",
+            "payerMeasureName": "DepressionScreening-CCF",
+            "arcadiaMeasureName": "CMSACO2020NIPREV12",
+            "arcadiaMeasureRate": "Default"
+        },
+        {
+            "payerSource": "10206",
+            "payerMeasureName": "StatinCardioDisease-CCF",
+            "arcadiaMeasureName": "CMSACO2020NIPREV13",
+            "arcadiaMeasureRate": "Default"
+        },
+        {
+            "payerSource": "10206",
+            "payerMeasureName": "ACODM>9-CCF",
+            "arcadiaMeasureName": "CMSACO2020NotPoorControlDM2",
+            "arcadiaMeasureRate": "Default"
+        },
+        {
+            "payerSource": "10206",
+            "payerMeasureName": "TobaccoIntervention-CCF",
+            "arcadiaMeasureName": "CMSACO2020PREV10Intervention",
+            "arcadiaMeasureRate": "Default"
+        },
+        {
+            "payerSource": "10206",
+            "payerMeasureName": "TobaccoScreening-CCF",
+            "arcadiaMeasureName": "CMSACO2020PREV10Screen",
+            "arcadiaMeasureRate": "Default"
+        },
+        {
+            "payerSource": "10206",
+            "payerMeasureName": "TobaccoScreen/Intervention-CCF",
+            "arcadiaMeasureName": "CMSACO2020PREV10ScreenIntervention",
+            "arcadiaMeasureRate": "Default"
+        },
+        {
+            "payerSource": "10206",
+            "payerMeasureName": "BreastCancerScreening-CCF",
+            "arcadiaMeasureName": "CMSACO2020PREV5",
+            "arcadiaMeasureRate": "Default"
+        },
+        {
+            "payerSource": "10206",
+            "payerMeasureName": "ColoCancerScreen-CCF",
+            "arcadiaMeasureName": "CMSACO2020PREV6",
+            "arcadiaMeasureRate": "Default"
+        },
+        {
+            "payerSource": "10206",
+            "payerMeasureName": "InfluenzaImmunization-CCF",
+            "arcadiaMeasureName": "CMSACO2020PREV7",
+            "arcadiaMeasureRate": "Default"
+        }
+    ]
+}

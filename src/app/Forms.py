@@ -14,16 +14,24 @@ RATES.sort()
 
 
 class newMeasureForm(FlaskForm):
-    initiative = StringField("Initiative Name", [validators.Length(min=1, max=50)])
+    initiative = StringField("Initiative Name", [validators.Length(min=1, max=50,message='Initiative Name must be between 1 and 50 chars')])
     specOwner = SelectField(
         label="Spec Owner", choices=["HEDIS", "CMS ACO", "ARIZONA MEDICAID"]
     )
     backendName = SelectField(label="Backend Name", choices=MEASURES)
     rate = SelectField("Rate", choices=RATES)
-    threshold = StringField("Threshold", [validators.number_range(0, 1)])
+    # threshold = StringField("Threshold", [validators.number_range(0, 1)])
+    threshold = StringField("Threshold")
     shortname = StringField("Short Name", [validators.Length(min=0, max=10)])
     description = StringField("Description", [validators.Length(min=6, max=35)])
     submit = SubmitField("Create Measure Artifacts")
+
+class envSelect(FlaskForm):
+    customer = StringField("Customer Acronym")
+    environment = SelectField(
+        label="Environment", choices=["UAT", "PRD", "PRD6"]
+    )
+    submit = SubmitField("Retreive JSON")
 
 if __name__ == "__main__":
     print(COMBOS)
