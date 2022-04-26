@@ -9,13 +9,26 @@
   {% extends "template.html" %}
   {% block content %}
 
-  {% for table in tables %}
-  {{titles[loop.index]}}
-  {{ table|safe }}
-  {% endfor %}
+  <form method="POST" action="{{url_for('edit')}}">
+    {{ form.hidden_tag() }}
+    <p>
+      {{ form.customer.label }} <br>
+      {{ form.customer(size=32) }}
+    </p>
+    <p>
+      {{ form.environment.label }}<br>
+      {{ form.environment(size=1) }}
+    </p>
+    <p>{{ form.submit() }}</p>
+  </form>
 
+  <p>
+    {% for table in tables %}
+    {{titles[loop.index]}}
+    {{ table|safe }}<br>
+    {% endfor %}
+  </p>
   {% endblock %}
-
 </body>
 
 </html>
